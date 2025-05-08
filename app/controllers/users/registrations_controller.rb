@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  before_action :configure_sign_up_params, only: [:create]
-  before_action :configure_account_update_params, only: [:update]
+  before_action :configure_sign_up_params, only: [ :create ]
+  before_action :configure_account_update_params, only: [ :update ]
 
   def create
     build_resource(sign_up_params)
@@ -19,7 +19,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(params[:id])
     if @user.update_with_email_confirmation(user_params)
-      redirect_to root_path, notice: 'メールアドレスの変更を確認してください。'
+      redirect_to root_path, notice: "メールアドレスの変更を確認してください。"
     else
       render :edit
     end
@@ -32,11 +32,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :email ])
   end
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name, :email ])
   end
 
   def after_sign_up_path_for(resource)
