@@ -1,6 +1,11 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
+
+  def update_with_email_confirmation(params)
+    self.unconfirmed_email = params[:email] if params[:email].present?
+    send_confirmation_instructions if unconfirmed_email.present?
+    save(validate: false)
+  end
 end

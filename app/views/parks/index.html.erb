@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Parks" %>
+
+<h1>公園ミッケ！！</h1>
+
+<div id="parks">
+  <% @parks.each do |park| %>
+    <%= render park %>
+    <p>
+      <%= link_to "この公園を詳しく知る！", park %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "公園を登録する", new_park_path %>
