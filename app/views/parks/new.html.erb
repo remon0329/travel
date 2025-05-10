@@ -1,0 +1,11 @@
+<% content_for :title, "公園を登録する" %>
+
+<h1><%= t('views.park.new.title') %></h1>
+
+<%= render "form", park: @park %>
+
+<br>
+
+<div>
+  <%= link_to "投稿一覧に戻る", parks_path %>
+</div>

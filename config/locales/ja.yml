@@ -1,0 +1,22 @@
+ja:
+  activerecord:
+    models:
+      park: 公園
+    attributes:
+      park:
+        name: 名前
+        description: 説明
+        address: 住所
+        image: 画像
+
+  helpers:
+    submit:
+      create: "%{model}を登録する"
+      update: "%{model}を更新"
+
+  views:
+    park:
+      new:
+        title: "新しい公園を作成"
+      edit:
+        title: "公園を編集"
