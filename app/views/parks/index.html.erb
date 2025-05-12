@@ -7,10 +7,14 @@
 <div id="parks">
   <% @parks.each do |park| %>
     <%= render park %>
+
+    <% if park.image.attached? %>
+      <%= image_tag url_for(park.image) %>
+    <% end %>
+
     <p>
       <%= link_to "この公園を詳しく知る！", park %>
     </p>
   <% end %>
+  <%= link_to "公園を登録する", new_park_path %>
 </div>
-
-<%= link_to "公園を登録する", new_park_path %>

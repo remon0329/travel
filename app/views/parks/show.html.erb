@@ -1,19 +1,12 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @park %>
-
 <div>
+  <%= render @park %>
+
+  <% if @park.image.attached? %>
+    <%= image_tag url_for(@park.image) %>
+  <% end %>
+
   <%= link_to "編集する", edit_park_path(@park) %> |
   <%= link_to "投稿一覧に戻る", parks_path %>
-
-  <p>
-    <strong>住所:</strong>
-    <%= link_to @park.address, "https://www.google.com/maps/search/?api=1&query=#{URI.encode_www_form_component(@park.address)}", target: "_blank", rel: "noopener" %>
-  </p>
-
-  <%= form_with(model: @park, local: true) do |form| %>
-  <div>
-    <%= form.submit "投稿", class: "bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" %>
-  </div>
-<% end %>
 </div>

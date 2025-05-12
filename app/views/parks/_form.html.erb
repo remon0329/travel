@@ -1,4 +1,4 @@
-<%= form_with(model: park) do |form| %>
+<%= form_with(model: park, local: true, html: { multipart: true }) do |form| %>
   <% if park.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(park.errors.count, "error") %> prohibited this park from being saved:</h2>
