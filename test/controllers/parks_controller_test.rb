@@ -17,7 +17,7 @@ class ParksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create park" do
-    image = fixture_file_upload("files/sample.jpg", "image/jpeg")
+    image = fixture_file_upload(Rails.root.join("test/fixtures/files/sample.jpg"), "image/jpeg")
 
     assert_difference("Park.count") do
       post parks_url, params: {
@@ -44,7 +44,7 @@ class ParksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update park" do
-    image = fixture_file_upload("files/sample.jpg", "image/jpeg")
+    image = fixture_file_upload(Rails.root.join("test/fixtures/files/sample.jpg"), "image/jpeg")
 
     patch park_url(@park), params: {
       park: {
