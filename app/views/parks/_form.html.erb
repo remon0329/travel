@@ -1,9 +1,8 @@
-<%= form_with(model: park, local: true, html: { multipart: true }) do |form| %>
+<%= form_with(model: park, local: true, html: { multipart: true, class: "space-y-6" }) do |form| %>
   <% if park.errors.any? %>
-    <div style="color: red">
+    <div class="text-red-600">
       <h2><%= pluralize(park.errors.count, "error") %> prohibited this park from being saved:</h2>
-
-      <ul>
+      <ul class="list-disc list-inside">
         <% park.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
@@ -11,27 +10,59 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :公園名, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="space-y-2">
+    <%= form.label :name, "公園名", class: "block font-semibold" %>
+    <%= form.text_field :name, class: "w-full border border-black p-2 rounded" %>
   </div>
 
-  <div>
-    <%= form.label :説明欄, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="space-y-2">
+    <%= form.label :description, "説明欄", class: "block font-semibold" %>
+    <%= form.text_area :description, class: "w-full border border-black p-2 rounded" %>
   </div>
 
-  <div>
-    <%= form.label :住所, style: "display: block" %>
-    <%= form.text_field :address %>
+  <div class="space-y-2">
+    <%= form.label :address, "住所", class: "block font-semibold" %>
+    <%= form.text_field :address, class: "w-full border border-black p-2 rounded" %>
   </div>
 
-  <div>
-    <%= form.label :写真 %>
-    <%= form.file_field :image %>
-  </div>
+  <div class="space-y-2">
+    <%= form.label :image, "写真", class: "block font-semibold" %>
 
-  <div>
-    <%= form.submit %>
+    <!-- ボタン風のラベル -->
+    <label for="park_image" class="inline-block cursor-pointer bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+      写真を選択
+    </label>
+
+    <!-- 実際のファイルフィールド -->
+    <%= form.file_field :image, class: "hidden", id: "park_image", accept: "image/*", onchange: "previewImage(event)" %>
+
+    <!-- プレビュー表示エリア -->
+    <div id="image_preview" class="mt-2"></div>
+  </div>
+  <!-- 画像プレビュー用のJavaScript -->
+  <script>
+    function previewImage(event) {
+      const previewContainer = document.getElementById('image_preview');
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          previewContainer.innerHTML = `
+            <img src="${e.target.result}" alt="プレビュー画像" class="mt-2 max-w-xs rounded border border-gray-300" />
+            <p class="text-sm mt-1 text-gray-600">ファイル名: ${file.name}</p>
+          `;
+        }
+
+        reader.readAsDataURL(file);
+      } else {
+        previewContainer.innerHTML = '';
+      }
+    }
+  </script>
+
+  <div class="text-center">
+    <%= form.submit "登録", class: "bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" %>
   </div>
 <% end %>

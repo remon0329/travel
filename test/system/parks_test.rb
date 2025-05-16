@@ -7,12 +7,12 @@ class ParksTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit parks_url
-    assert_selector "h1", text: "Parks"
+    assert_selector "h1", text: "公園ミッケ！！"
   end
 
   test "should create park" do
     visit parks_url
-    click_on "New park"
+    click_on "公園を登録する"
 
     fill_in "Address", with: @park.address
     fill_in "Description", with: @park.description
@@ -26,7 +26,7 @@ class ParksTest < ApplicationSystemTestCase
 
   test "should update Park" do
     visit park_url(@park)
-    click_on "Edit this park", match: :first
+    click_on "この公園を編集", match: :first
 
     fill_in "Address", with: @park.address
     fill_in "Description", with: @park.description
