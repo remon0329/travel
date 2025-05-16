@@ -1,20 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-green-600"><%= notice %></p>
 
 <% content_for :title, "Parks" %>
 
-<h1>公園ミッケ！！</h1>
+<h1 class="text-3xl font-bold text-center my-6">公園ミッケ！！</h1>
 
-<div id="parks">
+<div id="parks" class="max-w-4xl mx-auto space-y-6">
   <% @parks.each do |park| %>
-    <%= render park %>
+    <div class="border border-black p-4 rounded shadow-md bg-white">
+      <%= render park %>
 
-    <% if park.image.attached? %>
-      <%= image_tag url_for(park.image) %>
-    <% end %>
+      <% if park.image.attached? %>
+        <%= image_tag url_for(park.image), class: "mt-4 w-64 h-auto object-cover rounded mx-auto" %>
+      <% end %>
 
-    <p>
-      <%= link_to "この公園を詳しく知る！", park %>
-    </p>
+      <p class="mt-2">
+        <%= link_to "この公園を詳しく知る！", park, class: "text-blue-600 hover:underline" %>
+      </p>
+    </div>
   <% end %>
-  <%= link_to "公園を登録する", new_park_path %>
+
+  <div class="text-center mt-8">
+    <%= link_to "公園を登録する", new_park_path, class: "inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" %>
+  </div>
 </div>
