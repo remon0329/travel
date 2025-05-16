@@ -1,0 +1,12 @@
+<p style="color: green"><%= notice %></p>
+
+<div>
+  <%= render @park %>
+
+  <% if @park.image.attached? %>
+    <%= image_tag url_for(@park.image) %>
+  <% end %>
+
+  <%= link_to "編集する", edit_park_path(@park) %> |
+  <%= link_to "投稿一覧に戻る", parks_path %>
+</div>
