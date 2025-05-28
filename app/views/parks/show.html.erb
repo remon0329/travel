@@ -14,8 +14,10 @@
   <% end %>
 
   <div class="text-center space-x-4 mt-6">
-    <%= link_to "編集する", edit_park_path(@park), class: "text-blue-600 hover:underline" %>
+    <%= link_to "この公園を編集", edit_park_path(@park), class: "text-blue-600 hover:underline" %>
     |
     <%= link_to "投稿一覧に戻る", parks_path, class: "text-blue-600 hover:underline" %>
+    |
+    <%= link_to "削除", park_path(@park), method: :delete, data: { confirm: "Are you sure?" } %>
   </div>
 </div>

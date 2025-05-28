@@ -24,7 +24,7 @@ class ParksControllerTest < ActionDispatch::IntegrationTest
         park: {
           name: "テスト公園",
           description: "テスト説明",
-          address: "テスト住所",
+          address: "住所",
           image: image
         }
       }
