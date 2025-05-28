@@ -1,12 +1,21 @@
-<p style="color: green"><%= notice %></p>
+<p class="text-green-600 text-center"><%= notice %></p>
 
-<div>
+<% content_for :title, @park.name || "Park Details" %>
+
+<h1 class="text-3xl font-bold text-center my-6">公園の詳細</h1>
+
+<div class="max-w-2xl mx-auto border border-black p-6 rounded shadow-md bg-white space-y-4">
   <%= render @park %>
 
   <% if @park.image.attached? %>
-    <%= image_tag url_for(@park.image) %>
+    <div class="text-center">
+      <%= image_tag url_for(@park.image), class: "w-64 h-auto object-cover rounded mx-auto" %>
+    </div>
   <% end %>
 
-  <%= link_to "編集する", edit_park_path(@park) %> |
-  <%= link_to "投稿一覧に戻る", parks_path %>
+  <div class="text-center space-x-4 mt-6">
+    <%= link_to "編集する", edit_park_path(@park), class: "text-blue-600 hover:underline" %>
+    |
+    <%= link_to "投稿一覧に戻る", parks_path, class: "text-blue-600 hover:underline" %>
+  </div>
 </div>
