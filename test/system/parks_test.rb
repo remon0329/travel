@@ -14,7 +14,7 @@ class ParksTest < ApplicationSystemTestCase
     visit parks_url
     click_on "公園を登録する"
 
-    fill_in "Address", with: @park.address
+    fill_in "住所", with: @park.address
     fill_in "Description", with: @park.description
     fill_in "Image", with: @park.image
     fill_in "Name", with: @park.name
@@ -28,7 +28,7 @@ class ParksTest < ApplicationSystemTestCase
     visit park_url(@park)
     click_on "この公園を編集", match: :first
 
-    fill_in "Address", with: @park.address
+    fill_in "住所", with: @park.address
     fill_in "Description", with: @park.description
     fill_in "Image", with: @park.image
     fill_in "Name", with: @park.name
@@ -40,7 +40,7 @@ class ParksTest < ApplicationSystemTestCase
 
   test "should destroy Park" do
     visit park_url(@park)
-    click_on "削除", match: :first
+    click_on "Destroy this park", match: :first
 
     assert_text "Park was successfully destroyed"
   end
