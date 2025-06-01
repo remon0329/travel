@@ -18,7 +18,7 @@ class ParksTest < ApplicationSystemTestCase
     fill_in "公園名", with: @park.name
     attach_file("park_image", Rails.root.join("test/fixtures/files/sample.jpg"), make_visible: true)
 
-    click_on "Create Park"
+    click_on "登録"
 
     assert_text "Park was successfully created"
     click_on "Back"
@@ -34,7 +34,7 @@ class ParksTest < ApplicationSystemTestCase
 
     attach_file("park_image", Rails.root.join("test/fixtures/files/sample.jpg"), make_visible: true)
 
-    click_on "Update Park"
+    click_on "登録"
 
     assert_text "Park was successfully updated"
     click_on "Back"
