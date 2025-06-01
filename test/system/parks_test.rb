@@ -21,7 +21,7 @@ class ParksTest < ApplicationSystemTestCase
     click_on "登録"
 
     assert_text "Park was successfully created"
-    click_on "Back"
+    click_on "投稿一覧に戻る"
   end
 
   test "should update Park" do
@@ -37,7 +37,7 @@ class ParksTest < ApplicationSystemTestCase
     click_on "登録"
 
     assert_text "Park was successfully updated"
-    click_on "Back"
+    click_on "投稿一覧に戻る"
   end
 
   test "should destroy Park" do
