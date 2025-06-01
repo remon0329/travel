@@ -15,8 +15,8 @@ class ParksTest < ApplicationSystemTestCase
     click_on "公園を登録する"
 
     fill_in "住所", with: @park.address
-    fill_in "Description", with: @park.description
-    fill_in "Image", with: @park.image
+    fill_in "説明欄", with: @park.description
+    fill_in "写真", with: @park.image
     fill_in "Name", with: @park.name
     click_on "Create Park"
 
@@ -29,8 +29,8 @@ class ParksTest < ApplicationSystemTestCase
     click_on "この公園を編集", match: :first
 
     fill_in "住所", with: @park.address
-    fill_in "Description", with: @park.description
-    fill_in "Image", with: @park.image
+    fill_in "説明欄", with: @park.description
+    fill_in "写真", with: @park.image
     fill_in "Name", with: @park.name
     click_on "Update Park"
 
