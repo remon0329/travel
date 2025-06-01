@@ -13,12 +13,10 @@ class ParksTest < ApplicationSystemTestCase
   test "should create park" do
     visit parks_url
     click_on "公園を登録する"
-  
     fill_in "住所", with: @park.address
     fill_in "説明欄", with: @park.description
-    fill_in "Name", with: @park.name
-
-    attach_file('park_image', Rails.root.join('test/fixtures/files/sample.jpg'), make_visible: true)
+    fill_in "公園名", with: @park.name
+    attach_file("park_image", Rails.root.join("test/fixtures/files/sample.jpg"), make_visible: true)
 
     click_on "Create Park"
 
@@ -32,9 +30,9 @@ class ParksTest < ApplicationSystemTestCase
 
     fill_in "住所", with: @park.address
     fill_in "説明欄", with: @park.description
-    fill_in "Name", with: @park.name
+    fill_in "公園名", with: @park.name
 
-    attach_file('park_image', Rails.root.join('test/fixtures/files/sample.jpg'), make_visible: true)
+    attach_file("park_image", Rails.root.join("test/fixtures/files/sample.jpg"), make_visible: true)
 
     click_on "Update Park"
 
