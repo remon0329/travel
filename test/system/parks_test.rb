@@ -13,11 +13,13 @@ class ParksTest < ApplicationSystemTestCase
   test "should create park" do
     visit parks_url
     click_on "公園を登録する"
-
+  
     fill_in "住所", with: @park.address
     fill_in "説明欄", with: @park.description
-    fill_in "写真", with: @park.image
     fill_in "Name", with: @park.name
+
+    attach_file('park_image', Rails.root.join('test/fixtures/files/sample.jpg'), make_visible: true)
+
     click_on "Create Park"
 
     assert_text "Park was successfully created"
@@ -30,8 +32,10 @@ class ParksTest < ApplicationSystemTestCase
 
     fill_in "住所", with: @park.address
     fill_in "説明欄", with: @park.description
-    fill_in "写真", with: @park.image
     fill_in "Name", with: @park.name
+
+    attach_file('park_image', Rails.root.join('test/fixtures/files/sample.jpg'), make_visible: true)
+
     click_on "Update Park"
 
     assert_text "Park was successfully updated"
@@ -40,8 +44,9 @@ class ParksTest < ApplicationSystemTestCase
 
   test "should destroy Park" do
     visit park_url(@park)
-    click_on "削除", match: :first
-
+    accept_confirm "本当に削除しますか？" do
+      click_on "削除", match: :first
+    end
     assert_text "Park was successfully destroyed"
   end
 end
