@@ -40,7 +40,7 @@ class ParksTest < ApplicationSystemTestCase
 
   test "should destroy Park" do
     visit park_url(@park)
-    click_on "Destroy this park", match: :first
+    click_on "削除", match: :first
 
     assert_text "Park was successfully destroyed"
   end
