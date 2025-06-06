@@ -13,8 +13,18 @@
         <%= image_tag url_for(park.image), class: "mt-4 w-64 h-auto object-cover rounded mx-auto" %>
       <% end %>
 
-      <p class="mt-2">
+      <p class="mt-2 flex items-center space-x-4">
         <%= link_to "この公園を詳しく知る！", park, class: "text-blue-600 hover:underline" %>
+
+        <%= link_to "https://twitter.com/intent/tweet?text=#{ERB::Util.url_encode("#{park.name}という公園を見つけたよ！")}&url=#{ERB::Util.url_encode(park_url(park))}", 
+                    class: "flex items-center space-x-1 text-black hover:text-blue-500 text-sm", 
+                    target: "_blank", 
+                    rel: "noopener" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1227" class="w-4 h-4 fill-current">
+            <path d="M1024 306q-44 65-107 112 1 14 1 42 0 130-38 258T764 904q-93 124-227 195t-294 71q-163 0-309-60 23 3 49 3 135 0 247-83-63-1-112-38t-68-96q22 4 42 4 30 0 58-8-66-13-110-66t-44-122v-2q38 21 82 23-79-53-79-144 0-62 31-113 85 104 207 166t257 67q-5-27-5-52 0-96 67-163t162-67q100 0 167 73 78-15 147-56-27 84-103 130 66-7 132-36z"/>
+          </svg>
+          <span>Xでシェア</span>
+        <% end %>
       </p>
     </div>
   <% end %>
