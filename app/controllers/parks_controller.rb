@@ -8,6 +8,8 @@ class ParksController < ApplicationController
 
   # GET /parks/1 or /parks/1.json
   def show
+    @park = Park.find(params[:id])
+    @comments = @park.comments.order(created_at: :desc)
   end
 
   # GET /parks/new
