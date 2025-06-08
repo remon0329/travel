@@ -20,4 +20,24 @@
     |
     <%= link_to "削除", park_path(@park), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "text-blue-600 hover:underline" %>
   </div>
+  <div class="mt-8 space-y-4">
+    <h2 class="text-lg font-semibold">コメント</h2>
+    <% @park.comments.order(created_at: :desc).each do |comment| %>
+      <div class="border border-gray-300 rounded p-3 bg-gray-100">
+        <p><%= comment.content %></p>
+        <span class="text-xs text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></span>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- コメント投稿フォーム -->
+  <div class="mt-6">
+    <%= form_with(model: [@park, @park.comments.build], local: true) do |form| %>
+      <div class="mb-2">
+        <%= form.label :content, "コメントを入力", class: "block font-semibold" %>
+        <%= form.text_area :content, rows: 3, class: "w-full border border-gray-300 rounded p-2" %>
+      </div>
+      <%= form.submit "投稿", class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+    <% end %>
+  </div>
 </div>
