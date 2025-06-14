@@ -60,3 +60,5 @@ end
 
 gem "devise"
 gem "rails-i18n"
+gem "omniauth-line"
+gem "omniauth-rails_csrf_protection"
