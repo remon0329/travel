@@ -92,6 +92,8 @@ Devise.setup do |config|
   # Does not affect registerable.
   # config.paranoid = true
 
+  config.omniauth :line, ENV["2007607540"], ENV["3bf3c4cf0fe4a11084291f0cc68a48b8"]
+
   # By default Devise will store the user in session. You can skip storage for
   # particular strategies by setting this option.
   # Notice that if you are skipping storage for all authentication paths, you
