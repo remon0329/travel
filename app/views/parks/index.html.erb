@@ -8,6 +8,48 @@
   <% end %>
 </div>
 
+<div class="fixed top-4 left-4 z-50">
+  <button id="how-to-button" class="bg-blue-500 text-white font-semibold px-4 py-2 rounded hover:bg-blue-600 shadow">
+    使い方
+  </button>
+</div>
+
+<div id="how-to-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
+    <button id="close-modal" class="absolute top-2 right-2 text-gray-600 hover:text-gray-800">&times;</button>
+    <h2 class="text-xl font-bold mb-4">使い方</h2>
+    <p class="text-gray-700">
+      「公園ミッケ！！」では、ユーザーが見つけた素敵な公園を投稿したり、他の人が見つけた公園を閲覧したりできます。<br>
+      - 公園一覧から気になる場所をクリックすると詳細が見られます。<br>
+      - 公園のページからX（旧Twitter）でシェアも可能です。<br>
+      - 右上の「LINEでログイン」ボタンでログイン後、新しい公園の登録もできます。
+    </p>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const button = document.getElementById("how-to-button");
+    const modal = document.getElementById("how-to-modal");
+    const close = document.getElementById("close-modal");
+
+    button.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    close.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    // クリックで背景を押して閉じる
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+  });
+</script>
+
 <h1 class="text-3xl font-bold text-center my-6">公園ミッケ！！</h1>
 
 <div id="parks" class="max-w-4xl mx-auto space-y-6">
